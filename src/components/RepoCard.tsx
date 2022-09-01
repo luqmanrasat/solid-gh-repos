@@ -1,4 +1,4 @@
-import { Component, ComponentProps } from "solid-js";
+import { Component, ComponentProps, Show } from 'solid-js';
 import { savedRepos, setSavedRepos } from '../pages/SavedRepos';
 import { Repo } from '../types';
 
@@ -8,6 +8,16 @@ interface RepoCardProps extends ComponentProps<any> {
 
 const saveRepo = (repo: Repo) => {
   setSavedRepos([repo, ...savedRepos()]);
+};
+
+const removeRepo = (repoId: string) => {
+  setSavedRepos(savedRepos().filter((item) => item.id !== repoId));
+};
+
+const repoIsSaved = (repoId: string) => {
+  const repo = savedRepos().filter((item) => item.id === repoId);
+  console.log(repo.length > 0)
+  return repo.length > 0;
 };
 
 const RepoCard: Component<RepoCardProps> = ({ repo }) => {
@@ -24,7 +34,22 @@ const RepoCard: Component<RepoCardProps> = ({ repo }) => {
           <strong>{repo.owner?.login}</strong>/{repo.name}
         </a>
         <p class="card-text">{repo.description}</p>
-        <button class="btn btn-green my-3" onClick={ () => saveRepo(repo)}>Save</button>
+
+        <Show
+          when={!repoIsSaved(repo.id)}
+          fallback={
+            <button
+              class="btn btn-red my-3"
+              onClick={() => removeRepo(repo.id)}
+            >
+              Remove
+            </button>
+          }
+        >
+          <button class="btn btn-green my-3" onClick={() => saveRepo(repo)}>
+            Save
+          </button>
+        </Show>
       </div>
     </div>
   );

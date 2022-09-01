@@ -40,6 +40,10 @@ a {
   @apply bg-green-500 text-white;
 }
 
+.btn-red {
+  @apply bg-red-500 text-white;
+}
+
 .btn-dark {
   @apply bg-black text-white;
 }
