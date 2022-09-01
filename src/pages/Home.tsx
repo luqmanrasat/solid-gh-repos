@@ -1,5 +1,6 @@
-import { Component, createEffect } from "solid-js";
+import { Component, For, Suspense } from "solid-js";
 import { repos, setUsername, username } from "../App";
+import RepoCard, { Repo } from "../components/RepoCard";
 
 const Home: Component = () => {
   let usernameInput: HTMLInputElement;
@@ -8,10 +9,6 @@ const Home: Component = () => {
     event.preventDefault();
     setUsername(usernameInput.value);
   };
-
-  createEffect(() => {
-    console.log(repos());
-  });
 
   return (
     <div>
@@ -26,7 +23,12 @@ const Home: Component = () => {
           Fetch
         </button>
       </form>
-      <h3>Github repos for {username()}</h3>
+
+      <h3 class="mb-3">Github repos for {username()}</h3>
+
+      <Suspense fallback={<p>Fetching...</p>}>
+        <For each={repos()}>{(repo: Repo) => <RepoCard repo={repo} />}</For>
+      </Suspense>
     </div>
   );
 };

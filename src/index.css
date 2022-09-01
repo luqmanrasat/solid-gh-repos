@@ -18,18 +18,46 @@ input {
   @apply rounded border border-gray-700;
 }
 
+a {
+  @apply text-blue-900;
+}
+
+/* BUTTON */
+
 .btn {
-  @apply rounded px-3 py-2 hover:border-2 hover:border-gray-400;
+  @apply rounded px-3 py-2 hover:shadow-md;
 }
 
-.btn-primary {
-  @apply bg-blue-400 text-white;
+.btn-nav {
+  @apply bg-white border border-blue-600 text-blue-600;
 }
 
-.btn-success {
+.btn-nav-active {
+  @apply bg-blue-600 text-white;
+}
+
+.btn-green {
   @apply bg-green-500 text-white;
 }
 
 .btn-dark {
   @apply bg-black text-white;
+}
+
+/* CARD */
+
+.card {
+  @apply rounded border border-gray-200 hover:shadow-md;
+}
+
+.card-header {
+  @apply bg-gray-100 border-b border-gray-200 p-2;
+}
+
+.card-body {
+  @apply p-2;
+}
+
+.card-title {
+  @apply text-lg;
 }
