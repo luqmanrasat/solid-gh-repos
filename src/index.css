@@ -10,8 +10,16 @@ h2 {
   @apply text-2xl font-bold;
 }
 
+h3 {
+  @apply text-xl font-bold;
+}
+
+input {
+  @apply rounded border border-gray-700;
+}
+
 .btn {
-  @apply rounded p-2 hover:border-2 hover:border-gray-400;
+  @apply rounded px-3 py-2 hover:border-2 hover:border-gray-400;
 }
 
 .btn-primary {
@@ -20,4 +28,8 @@ h2 {
 
 .btn-success {
   @apply bg-green-500 text-white;
+}
+
+.btn-dark {
+  @apply bg-black text-white;
 }
