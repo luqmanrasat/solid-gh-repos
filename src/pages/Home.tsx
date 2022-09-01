@@ -4,7 +4,7 @@ import { repos, setUsername, username } from "../App";
 const Home: Component = () => {
   let usernameInput: HTMLInputElement;
 
-  const refetchRepos = (event: Event) => {
+  const submitUsername = (event: Event) => {
     event.preventDefault();
     setUsername(usernameInput.value);
   };
@@ -15,7 +15,7 @@ const Home: Component = () => {
 
   return (
     <div>
-      <form class="mb-3" onSubmit={(event) => refetchRepos(event)}>
+      <form class="mb-3" onSubmit={(event) => submitUsername(event)}>
         <input
           ref={usernameInput!}
           class="p-1 align-middle"
