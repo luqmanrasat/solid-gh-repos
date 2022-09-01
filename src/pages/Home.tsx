@@ -1,6 +1,8 @@
-import { Component, For, Suspense } from "solid-js";
-import { repos, setUsername, username } from "../App";
-import RepoCard from "../components/RepoCard";
+// TODO: Add pagination
+
+import { Component, For, Show, Suspense } from 'solid-js';
+import { repos, setUsername, username } from '../App';
+import RepoCard from '../components/RepoCard';
 
 const Home: Component = () => {
   let usernameInput: HTMLInputElement;
@@ -27,7 +29,12 @@ const Home: Component = () => {
       <h3 class="mb-3">Github repos for {username()}</h3>
 
       <Suspense fallback={<p>Fetching...</p>}>
-        <For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
+        <Show
+          when={repos()?.length > 0} // TODO: Fix this shit
+          fallback={<p>Username has no repository.</p>}
+        >
+          <For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
+        </Show>
       </Suspense>
     </div>
   );

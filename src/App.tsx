@@ -9,7 +9,8 @@ const fetchRepo = async (username: string): Promise<Repo[]> => {
   const res = await fetch(
     `https://api.github.com/users/${username}/repos?sort=created`
   );
-  return res.json();
+  const data = await res.json();
+  return data;
 };
 
 const [username, setUsername] = createSignal("luqmanrasat");
