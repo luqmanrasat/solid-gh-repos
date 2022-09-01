@@ -3,8 +3,9 @@ import { Route, Routes } from "@solidjs/router";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import SavedRepos from "./pages/SavedRepos";
+import { Repo } from './types';
 
-const fetchRepo = async (username: string) => {
+const fetchRepo = async (username: string): Promise<Repo[]> => {
   const res = await fetch(
     `https://api.github.com/users/${username}/repos?sort=created`
   );

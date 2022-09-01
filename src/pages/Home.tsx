@@ -1,6 +1,6 @@
 import { Component, For, Suspense } from "solid-js";
 import { repos, setUsername, username } from "../App";
-import RepoCard, { Repo } from "../components/RepoCard";
+import RepoCard from "../components/RepoCard";
 
 const Home: Component = () => {
   let usernameInput: HTMLInputElement;
@@ -27,7 +27,7 @@ const Home: Component = () => {
       <h3 class="mb-3">Github repos for {username()}</h3>
 
       <Suspense fallback={<p>Fetching...</p>}>
-        <For each={repos()}>{(repo: Repo) => <RepoCard repo={repo} />}</For>
+        <For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
       </Suspense>
     </div>
   );
