@@ -14,4 +14,4 @@ const SavedRepos: Component = () => {
 };
 
 export default SavedRepos;
-export { setSavedRepos };
+export { savedRepos, setSavedRepos };
