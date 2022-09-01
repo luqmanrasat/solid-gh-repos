@@ -16,7 +16,6 @@ const removeRepo = (repoId: string) => {
 
 const repoIsSaved = (repoId: string) => {
   const repo = savedRepos().filter((item) => item.id === repoId);
-  console.log(repo.length > 0)
   return repo.length > 0;
 };
 
